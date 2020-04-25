@@ -1,26 +1,44 @@
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/spacing">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/spacing">
 
     <TextView
-            android:id="@+id/username"
-            style="?android:textAppearanceMedium"
-            android:textColor="?android:textColorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:textStyle="bold"/>
-    <TextView
+        android:id="@+id/username"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/spacing"
+        android:paddingRight="@dimen/spacing"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="45px" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
             android:id="@+id/message"
             style="?android:textAppearanceMedium"
-            android:textColor="?android:textColorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/spacing"
             android:paddingRight="@dimen/spacing"
-            android:singleLine="true"/>
+            android:textColor="?android:textColorPrimary"
+            android:textSize="50px" />
+
+        <TextView
+            android:id="@+id/time"
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/spacing"
+            android:paddingRight="@dimen/spacing"
+            android:layout_gravity="end"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="22px" />
+    </LinearLayout>
 
 </LinearLayout>

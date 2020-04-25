@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -62,12 +64,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mUsernameView;
         private TextView mMessageView;
+        private TextView mTimeView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             mUsernameView = (TextView) itemView.findViewById(R.id.username);
             mMessageView = (TextView) itemView.findViewById(R.id.message);
+            mTimeView = (TextView) itemView.findViewById(R.id.time);
         }
 
         public void setUsername(String username) {
@@ -79,6 +83,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         public void setMessage(String message) {
             if (null == mMessageView) return;
             mMessageView.setText(message);
+
+            setTime();
+        }
+
+        private void setTime(){
+            if(mTimeView != null) {
+                Calendar rightNow = Calendar.getInstance();
+                SimpleDateFormat df = new SimpleDateFormat("KK:mm a"); // return the hour format (ranging from 0-11)
+                String  currentTime = df.format(rightNow.getTime());
+
+                mTimeView.setText(currentTime);
+            }
         }
 
         private int getUsernameColor(String username) {
