@@ -23,6 +23,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,8 +57,9 @@ public class MainFragment extends Fragment {
     private Handler mTypingHandler = new Handler();
     private String mUsername;
     private Socket mSocket;
-
     private Boolean isConnected = true;
+    // To be able to change actionbar title
+    private ActionBar actionBar;
 
     public MainFragment() {
         super();
@@ -101,6 +104,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -229,20 +233,11 @@ public class MainFragment extends Fragment {
     }
 
     private void addTyping(String username) {
-        mMessages.add(new Message.Builder(Message.TYPE_ACTION)
-                .username(username).build());
-        mAdapter.notifyItemInserted(mMessages.size() - 1);
-        scrollToBottom();
+        actionBar.setTitle(username + getText(R.string.user_action_typing));
     }
 
     private void removeTyping(String username) {
-        for (int i = mMessages.size() - 1; i >= 0; i--) {
-            Message message = mMessages.get(i);
-            if (message.getType() == Message.TYPE_ACTION && message.getUsername().equals(username)) {
-                mMessages.remove(i);
-                mAdapter.notifyItemRemoved(i);
-            }
-        }
+        actionBar.setTitle(R.string.app_name);
     }
 
     private void attemptSend() {

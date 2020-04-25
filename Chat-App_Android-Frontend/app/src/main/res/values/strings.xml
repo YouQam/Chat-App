@@ -16,5 +16,5 @@
     </plurals>
     <string name="message_user_joined">%s joined</string>
     <string name="message_user_left">%s left</string>
-    <string name="user_action_typing">is typing</string>
+    <string name="user_action_typing">" is typing..."</string>
 </resources>

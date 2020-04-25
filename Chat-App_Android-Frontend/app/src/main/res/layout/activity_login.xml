@@ -24,7 +24,7 @@
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPersonName"
-                android:maxLength="14"
+                android:maxLength="20"
                 android:maxLines="1"
                 android:singleLine="true"/>
         <Button
