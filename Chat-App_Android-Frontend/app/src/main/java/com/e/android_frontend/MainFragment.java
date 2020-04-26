@@ -46,8 +46,9 @@ public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
 
     private static final int REQUEST_LOGIN = 0;
+    public static final int TYPING_TIMER_LENGTH = 600;
+    public static String myUserName;
 
-    private static final int TYPING_TIMER_LENGTH = 600;
 
     private RecyclerView mMessagesView;
     private EditText mInputMessageView;
@@ -188,8 +189,11 @@ public class MainFragment extends Fragment {
         mUsername = data.getStringExtra("username");
         int numUsers = data.getIntExtra("numUsers", 1);
 
+        myUserName = mUsername; // store user name to be used in message styling function
+
         addLog(getResources().getString(R.string.message_welcome));
-        addParticipantsLog(numUsers);
+        addLog(getResources().getString(R.string.message_user_joined, "You"));
+        //addParticipantsLog(numUsers);
     }
 
     @Override
@@ -222,7 +226,7 @@ public class MainFragment extends Fragment {
     }
 
     private void addParticipantsLog(int numUsers) {
-        addLog(getResources().getQuantityString(R.plurals.message_participants, numUsers, numUsers));
+        //addLog(getResources().getQuantityString(R.plurals.message_participants, numUsers, numUsers)); // show number of (Y.Q.)
     }
 
     private void addMessage(String username, String message) {

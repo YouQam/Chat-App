@@ -3,6 +3,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorGray">#F0F0F0</color>
 
     <color name="username0">#e21400</color>
     <color name="username1">#91580f</color>
@@ -16,4 +17,7 @@
     <color name="username9">#3824aa</color>
     <color name="username10">#a700ff</color>
     <color name="username11">#d300e7</color>
+
+    <color name="sentMessage">#91e491</color>
+    <color name="userJoined">#ADD8E6</color>
 </resources>

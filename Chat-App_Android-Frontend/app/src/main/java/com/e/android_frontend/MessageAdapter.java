@@ -1,9 +1,11 @@
 package com.e.android_frontend;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,15 +29,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int layout = -1;
         switch (viewType) {
-        case Message.TYPE_MESSAGE:
-            layout = R.layout.item_message;
-            break;
-        case Message.TYPE_LOG:
-            layout = R.layout.item_log;
-            break;
-        case Message.TYPE_ACTION:
-            layout = R.layout.item_action;
-            break;
+            case Message.TYPE_MESSAGE:
+                layout = R.layout.item_message;
+                break;
+            case Message.TYPE_LOG:
+                layout = R.layout.item_log;
+                break;
+            case Message.TYPE_ACTION:
+                layout = R.layout.item_action;
+                break;
         }
         View v = LayoutInflater
                 .from(parent.getContext())
@@ -65,6 +67,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         private TextView mUsernameView;
         private TextView mMessageView;
         private TextView mTimeView;
+        private LinearLayout mMessageLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -72,12 +75,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             mUsernameView = (TextView) itemView.findViewById(R.id.username);
             mMessageView = (TextView) itemView.findViewById(R.id.message);
             mTimeView = (TextView) itemView.findViewById(R.id.time);
+            mMessageLayout = (LinearLayout) itemView.findViewById(R.id.messageLayout);
         }
 
         public void setUsername(String username) {
             if (null == mUsernameView) return;
             mUsernameView.setText(username);
             mUsernameView.setTextColor(getUsernameColor(username));
+
+            if (MainFragment.myUserName == username) {
+                setMessageStyle(R.drawable.sent_message, View.GONE, Gravity.END);
+            }else{
+                setMessageStyle(R.drawable.received_message, View.VISIBLE, Gravity.START);
+            }
         }
 
         public void setMessage(String message) {
@@ -87,14 +97,26 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             setTime();
         }
 
-        private void setTime(){
-            if(mTimeView != null) {
+        private void setTime() {
+            if (mTimeView != null) {
                 Calendar rightNow = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("KK:mm a"); // return the hour format (ranging from 0-11)
-                String  currentTime = df.format(rightNow.getTime());
+                String currentTime = df.format(rightNow.getTime());
 
                 mTimeView.setText(currentTime);
+
             }
+        }
+
+        private void setMessageStyle(int backgroundResource, int userNameVisibility, int layoutGravity) {
+            mMessageLayout.setBackgroundResource(backgroundResource);
+            mUsernameView.setVisibility(userNameVisibility);
+
+            // set message view side
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.gravity = layoutGravity;
+            mMessageLayout.setLayoutParams(params);
         }
 
         private int getUsernameColor(String username) {
