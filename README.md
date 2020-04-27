@@ -1,6 +1,6 @@
 # Chat-App
 
-This is a chat application that allow multiple users to join a room and chat. The application includses NodeJS server and usses SochetIO to send and receive data in real time with the server. 
+This is an android chat application that allow multiple users to join a room and chat. The application includses NodeJS server and usses SochetIO to send and receive data in real time with the server. 
 
 
 ## Demo
