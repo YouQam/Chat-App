@@ -36,8 +36,7 @@
                 android:imeOptions="actionSend"
                 android:inputType="text"
                 android:maxLines="1"
-                android:singleLine="true"
-                android:windowSoftInputMode="adjustResize"/>
+                android:singleLine="true"/>
         <ImageButton
                 android:id="@+id/send_button"
                 android:layout_width="wrap_content"
