@@ -3,7 +3,7 @@
 This is an android chat application that allow multiple users to join a room and chat. The application includes NodeJS server and uses SochetIO to send and receive data in real time with the server. 
 
 
-## Demo
+## App Demo
 
 <p align="center"><img src="https://i.imgur.com/YBH4HYb.gif" height="500" alt="alt text" title="demo"></p>
 
