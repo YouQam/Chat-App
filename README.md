@@ -5,7 +5,7 @@ This is an android chat application that allow multiple users to join a room and
 
 ## App Demo
 
-<p align="center"><img src="https://i.imgur.com/YBH4HYb.gif" height="500" alt="alt text" title="demo"></p>
+<br> <p align="center"><img src="https://i.imgur.com/YBH4HYb.gif" height="500" alt="alt text" title="demo"></p>
 
 
 ## Usage
